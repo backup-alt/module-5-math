@@ -35,7 +35,13 @@ type ViewMode = 'key' | 'split' | 'latex';
 type PartFilter = 'ALL' | 'A' | 'B' | 'C' | 'CW';
 
 export default function App() {
-  const [activeModule, setActiveModule] = useState<ActiveModule>('module5');
+  const [activeModule, setActiveModule] = useState<ActiveModule>(() => {
+    if (typeof window !== 'undefined') {
+      const requested = new URLSearchParams(window.location.search).get('module');
+      if (requested === 'module2' || requested === 'module5') return requested;
+    }
+    return 'module5';
+  });
   const [viewMode, setViewMode] = useState<ViewMode>('split');
   const [partFilter, setPartFilter] = useState<PartFilter>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
