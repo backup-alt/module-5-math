@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Class-based dark mode: `dark:` utilities activate on `html.dark`. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html.dark {
+  color-scheme: dark;
+}
+
 @layer base {
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -16,6 +23,40 @@
 
 .latex-document .katex {
   font-size: 1.04em;
+}
+
+/*
+ * Dark-mode exam "paper": the answer-key sheet is the reading surface, so it
+ * inverts to a dark sheet with light serif text instead of staying white.
+ * Scoped to .latex-page so the surrounding chrome keeps its own dark palette.
+ */
+.dark .latex-page {
+  background-color: #111B2E;
+  border-color: #22314F;
+  color: #E2E8F0;
+}
+
+.dark .latex-page .text-black {
+  color: #CBD5E1;
+}
+
+.dark .latex-page .text-black.font-bold {
+  color: #F1F5F9;
+}
+
+.dark .latex-page .border-black,
+.dark .latex-page .border-slate-200 {
+  border-color: #3B4C6B;
+}
+
+/* Inline graph wrappers and recessed boxes inside the paper */
+.dark .latex-page .bg-white {
+  background-color: #1A2742;
+  border-color: #3B4C6B;
+}
+
+.dark .latex-page .bg-slate-50 {
+  background-color: #16233C;
 }
 
 .latex-document .katex-display {
@@ -50,6 +91,18 @@
     padding: 0 !important;
     max-width: 100% !important;
     width: 100% !important;
+    /* Printing overrides whichever theme is active */
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+
+  .latex-page * {
+    color: #000000 !important;
+    border-color: #000000 !important;
+  }
+
+  .latex-page *:not(svg):not(path):not(line):not(rect):not(circle) {
+    background-color: transparent !important;
   }
 
   .question-block {
