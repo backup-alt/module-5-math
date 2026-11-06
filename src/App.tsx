@@ -286,8 +286,8 @@ export default function App() {
 
   const pdfHref =
     activeModule === 'module5'
-      ? '/EMA51005_Module_5_Final_Answer_Key.pdf'
-      : '/EMA51005_Module_2_Final_Answer_Key.pdf';
+      ? `${import.meta.env.BASE_URL}EMA51005_Module_5_Final_Answer_Key.pdf`
+      : `${import.meta.env.BASE_URL}EMA51005_Module_2_Final_Answer_Key.pdf`;
   const pdfDownloadName =
     activeModule === 'module5'
       ? 'EMA51005_Module_5_Final_Answer_Key.pdf'
@@ -575,7 +575,7 @@ export default function App() {
                 </p>
                 <div className="space-y-2.5 text-xs">
                   <a
-                    href="/EMA51005_Module_5_Final_Answer_Key.pdf"
+                    href={`${import.meta.env.BASE_URL}EMA51005_Module_5_Final_Answer_Key.pdf`}
                     download="EMA51005_Module_5_Final_Answer_Key.pdf"
                     className="flex items-center justify-between p-3 rounded-lg border border-blue-200 bg-blue-50/60 hover:bg-blue-50 transition-colors text-blue-900 font-semibold"
                   >
@@ -583,7 +583,7 @@ export default function App() {
                     <Download className="w-4 h-4 text-blue-700 shrink-0" />
                   </a>
                   <a
-                    href="/EMA51005_Module_2_Final_Answer_Key.pdf"
+                    href={`${import.meta.env.BASE_URL}EMA51005_Module_2_Final_Answer_Key.pdf`}
                     download="EMA51005_Module_2_Final_Answer_Key.pdf"
                     className="flex items-center justify-between p-3 rounded-lg border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-colors text-slate-800 font-medium"
                   >
@@ -591,7 +591,7 @@ export default function App() {
                     <Download className="w-4 h-4 text-slate-500 shrink-0" />
                   </a>
                   <a
-                    href="/assets/aistudio/DM_EMA51005_Question_Bank_Module_5_0dac0262.pdf"
+                    href={`${import.meta.env.BASE_URL}assets/aistudio/DM_EMA51005_Question_Bank_Module_5_0dac0262.pdf`}
                     target="_blank"
                     rel="noreferrer"
                     className="flex items-center justify-between p-3 rounded-lg border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-colors text-slate-800 font-medium"
@@ -600,7 +600,7 @@ export default function App() {
                     <Eye className="w-4 h-4 text-slate-500 shrink-0" />
                   </a>
                   <a
-                    href="/assets/aistudio/DM_EMA51005_Question_Bank_Module_2__1__8e66367d.pdf"
+                    href={`${import.meta.env.BASE_URL}assets/aistudio/DM_EMA51005_Question_Bank_Module_2__1__8e66367d.pdf`}
                     target="_blank"
                     rel="noreferrer"
                     className="flex items-center justify-between p-3 rounded-lg border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-colors text-slate-800 font-medium"
@@ -896,7 +896,7 @@ export default function App() {
                 <div className="bg-slate-900 overflow-auto max-h-[680px] flex items-start justify-center p-3">
                   {!imageErrorMap[selectedNotebookPage.imagePath] ? (
                     <img
-                      src={selectedNotebookPage.imagePath}
+                      src={`${import.meta.env.BASE_URL}${selectedNotebookPage.imagePath.replace(/^\//, '')}`}
                       alt={selectedNotebookPage.label}
                       referrerPolicy="no-referrer"
                       style={{

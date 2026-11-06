@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/module-5-math/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
